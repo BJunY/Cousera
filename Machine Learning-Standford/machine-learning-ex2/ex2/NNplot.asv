@@ -1,0 +1,14 @@
+function [theta1, theta2] = NNplot(X, y, theta1, theta2, iter_num, alpha)
+
+plot(X, y, 'g*');
+hold on;
+
+for i =1:iter_num,
+    [cost, out, gradient1, gradient2] = NNCostCompute(X, y, theta1, theta2);
+    theta1 = theta1 - alpha*gradient1;
+    theta2 = theta2 - alpha*gradient2;
+end;
+
+[cost, out, gradient1, gradient2] = NNCostCompute(X, y, theta1, theta2);
+
+plot(X(:,2), out, 'r');
